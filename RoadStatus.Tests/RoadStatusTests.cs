@@ -12,25 +12,45 @@ namespace RoadStatus.Tests
         [DataRow("a2", "A2")]
         public void TestGetRoadStatus_When_ValidRoadId_Then_DisplayName_ShouldNotBeNullOrEmpty(string validRoadId, string expectedDisplayName)
         {
+            //Arrange
             base.Setup();
-
             var statusTracker = new StatusTracker(_tflRepository.Object, _config.Object);
 
-            var status = statusTracker.GetRoadStatus(It.IsAny<string>());
-            if (status != null)
-                Assert.AreEqual(expectedDisplayName, status.DisplayName);
+            //Act
+            var road = statusTracker.GetRoadStatus(It.IsAny<string>());
+
+            //Assert
+             Assert.AreEqual(expectedDisplayName, road?.SuccessStatus.DisplayName);
         }
 
         [TestMethod]
-        public void TestGetRoadStatus_When_ValidRoadId_Then_RoadStatus_ShouldNotBeNullOrEmpty()
+        [DataRow("a2", "Good")]
+        public void TestGetRoadStatus_When_ValidRoadId_Then_RoadStatus_ShouldNotBeNullOrEmpty(string validRoadId, string expectedRoadStatus)
         {
-            throw new NotImplementedException();
+            //Arrange
+            base.Setup();
+            var statusTracker = new StatusTracker(_tflRepository.Object, _config.Object);
+
+            //Act
+            var road = statusTracker.GetRoadStatus(It.IsAny<string>());
+
+            //Assert
+            Assert.AreEqual(expectedRoadStatus, road?.SuccessStatus.StatusSeverity);
         }
 
         [TestMethod]
-        public void TestGetRoadStatus_When_ValidRoadId_Then_StatusSeverityDescription_ShouldNotBeNullOrEmpty()
+        [DataRow("a2", "No Exceptional Delays")]
+        public void TestGetRoadStatus_When_ValidRoadId_Then_StatusSeverityDescription_ShouldNotBeNullOrEmpty(string validRoadId, string expectedRoadStatusDescription)
         {
-            throw new NotImplementedException();
+            //Arrange
+            base.Setup();
+            var statusTracker = new StatusTracker(_tflRepository.Object, _config.Object);
+
+            //Act
+            var road = statusTracker.GetRoadStatus(It.IsAny<string>());
+
+            //Assert
+            Assert.AreEqual(expectedRoadStatusDescription, road?.SuccessStatus.StatusSeverityDescription);
         }
 
         [TestMethod]

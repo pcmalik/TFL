@@ -8,7 +8,7 @@ namespace RoadStatus.Repositories
 {
     public class RoadStatusRepository : IRoadStatusRepository
     {
-        public Status[] GetRoadStatus(string roadId)
+        public Road GetRoadStatus(string roadId)
         {
             throw new NotImplementedException();
         }

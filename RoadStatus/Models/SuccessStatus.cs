@@ -2,7 +2,7 @@
 
 namespace RoadStatus.Models
 {
-    public class Status
+    public class SuccessStatus
     {
         [JsonProperty("$Type")]
         public string Type {get; set;}
