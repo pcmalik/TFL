@@ -1,8 +1,7 @@
 {
   "profiles": {
     "RoadStatus": {
-      "commandName": "Project",
-      "commandLineArgs": "A2"
+      "commandName": "Project"
     }
   }
 }

@@ -23,13 +23,13 @@ namespace RoadStatus
 
                 if (roadStatus.Valid)
                 {
-                    Console.WriteLine($"The status of the {roadId} is as follows\n");
+                    Console.WriteLine($"\nThe status of the {roadId} is as follows\n");
                     Console.WriteLine($"\t Road Status is {roadStatus.StatusSeverity} \n");
                     Console.WriteLine($"\t Road Status Description is {roadStatus.StatusSeverityDescription} \n");
                 }
                 else
                 {
-                    Console.WriteLine($"{roadId} is not a valid road\n");
+                    Console.WriteLine($"\n{roadId} is not a valid road\n");
 
                     status = 1;
                 }
