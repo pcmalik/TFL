@@ -78,9 +78,9 @@ namespace RoadStatus.Tests
             var statusTracker = new Mock<IStatusTracker>();
             statusTracker.Setup(x => x.GetRoadStatus(It.IsAny<string>())).Returns(new RoadInfo{Valid = false});
 
-            var application = new TFLApplication(statusTracker.Object);
+            var application = new StatusReporter(statusTracker.Object);
             //Act
-            var result = application.Run(new string[] { "Invalid_Road"});
+            var result = application.GetRoadStatus("Invalid_Road");
 
             //Assert
             Assert.AreEqual(expectedLastExitCode, result);

@@ -28,7 +28,7 @@ namespace RoadStatus
             serviceCollection.AddScoped<IStatusTracker, StatusTracker>();
 
             // add application
-            serviceCollection.AddSingleton<TFLApplication>();
+            serviceCollection.AddSingleton<StatusReporter>();
 
             return serviceCollection.BuildServiceProvider();
         }

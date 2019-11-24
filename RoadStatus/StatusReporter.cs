@@ -3,22 +3,20 @@ using System;
 
 namespace RoadStatus
 {
-    public class TFLApplication
+    public class StatusReporter
     {
         private readonly IStatusTracker _statusTracker;
 
-        public TFLApplication(IStatusTracker statusTracker)
+        public StatusReporter(IStatusTracker statusTracker)
         {
             _statusTracker = statusTracker;
         }
         
-        public int Run(string[] args)
+        public int GetRoadStatus(string roadId)
         {
-            int status = 0;
-            if (args != null && args.Length > 0)
+            int status = 1;
+            if (!string.IsNullOrEmpty(roadId))
             {
-                string roadId = args[0];
-
                 var roadStatus = _statusTracker.GetRoadStatus(roadId);
 
                 if (roadStatus.Valid)
@@ -26,11 +24,11 @@ namespace RoadStatus
                     Console.WriteLine($"\nThe status of the {roadId} is as follows\n");
                     Console.WriteLine($"\t Road Status is {roadStatus.StatusSeverity} \n");
                     Console.WriteLine($"\t Road Status Description is {roadStatus.StatusSeverityDescription} \n");
+                    status = 0;
                 }
                 else
                 {
-                    Console.WriteLine($"\n"+roadStatus.FailureMessage +"\n");
-                    status = 1;
+                    Console.WriteLine($"\n{ roadStatus.FailureMessage}\n");
                 }
             }
 
