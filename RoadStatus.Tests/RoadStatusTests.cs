@@ -11,7 +11,7 @@ namespace RoadStatus.Tests
         #region Valid Road Scenarios
         [TestMethod]
         [DataRow("A2")]
-        public void TestGetRoadStatus_When_ValidRoadId_Then_DisplayName_ShouldNotBeNullOrEmpty(string expectedDisplayName)
+        public void TestGetRoadStatus_When_ValidRoadId_Then_Return_Expected_DisplayName(string expectedDisplayName)
         {
             //Arrange
             base.SetupForValidRoad();
@@ -26,7 +26,7 @@ namespace RoadStatus.Tests
 
         [TestMethod]
         [DataRow("Good")]
-        public void TestGetRoadStatus_When_ValidRoadId_Then_RoadStatus_ShouldNotBeNullOrEmpty(string expectedRoadStatus)
+        public void TestGetRoadStatus_When_ValidRoadId_Then_Return_Expected_RoadStatus(string expectedRoadStatus)
         {
             //Arrange
             base.SetupForValidRoad();
@@ -41,7 +41,7 @@ namespace RoadStatus.Tests
 
         [TestMethod]
         [DataRow("No Exceptional Delays")]
-        public void TestGetRoadStatus_When_ValidRoadId_Then_StatusSeverityDescription_ShouldNotBeNullOrEmpty(string expectedRoadStatusDescription)
+        public void TestGetRoadStatus_When_ValidRoadId_Then_Return_Expected_StatusSeverityDescription(string expectedRoadStatusDescription)
         {
             //Arrange
             base.SetupForValidRoad();
@@ -58,7 +58,7 @@ namespace RoadStatus.Tests
         #region Invalid Road Scenarios
         [TestMethod]
         [DataRow("A233 is not a valid road")]
-        public void TestGetRoadStatus_When_InValidRoadId_Then_Return_InformativeError(string expectedFailureMessage)
+        public void TestGetRoadStatus_When_InValidRoadId_Then_Return_Expected_InformativeError(string expectedFailureMessage)
         {
             base.SetupForInvalidRoad();
             var statusTracker = new StatusTracker(_tflRepository.Object);
@@ -72,7 +72,7 @@ namespace RoadStatus.Tests
 
         [TestMethod]
         [DataRow(1)]
-        public void TestGetRoadStatus_When_InValidRoadId_Then_Return_LastExitCode(int expectedLastExitCode)
+        public void TestGetRoadStatus_When_InValidRoadId_Then_Return_Expected_LastExitCode(int expectedLastExitCode)
         {
             //Arrange
             var statusTracker = new Mock<IStatusTracker>();
