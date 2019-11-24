@@ -15,6 +15,9 @@ namespace RoadStatus.Repositories
 
         public HttpServiceRepository(IOptions<AppSettings> config)
         {
+            if (config == null || config.Value == null)
+                throw new ArgumentNullException("config not initialized");
+
             _config = config;
 
             if (!ValidConfigurationSettings())

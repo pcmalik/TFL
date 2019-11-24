@@ -24,32 +24,49 @@ namespace RoadStatus.Repositories
             var roadInfo = new RoadInfo();
             var httpClient = _httpServiceRepository.GetHttpClient();
             string query = _httpServiceRepository.GetQueryString($"Road/{roadId}");
-            HttpResponseMessage response = httpClient.GetAsync(query).Result;
+            string responseString = string.Empty;
 
-            if (response.IsSuccessStatusCode)
+            try
             {
-                string responseString = response.Content.ReadAsStringAsync().Result;
-                var successStatus = JsonConvert.DeserializeObject<SuccessStatus[]>(responseString);
+                HttpResponseMessage response = httpClient.GetAsync(query).Result;
 
-                if (successStatus != null && successStatus.Length > 0)
+                if (response.IsSuccessStatusCode)
                 {
-                    roadInfo.Valid = true;
-                    roadInfo.DisplayName = successStatus[0].DisplayName;
-                    roadInfo.StatusSeverity = successStatus[0].StatusSeverity;
-                    roadInfo.StatusSeverityDescription = successStatus[0].StatusSeverityDescription;
+                    responseString = response.Content.ReadAsStringAsync().Result;
+                    var successStatus = JsonConvert.DeserializeObject<SuccessStatus[]>(responseString);
+
+                    if (successStatus != null && successStatus.Length > 0)
+                    {
+                        roadInfo.Valid = true;
+                        roadInfo.DisplayName = successStatus[0].DisplayName;
+                        roadInfo.StatusSeverity = successStatus[0].StatusSeverity;
+                        roadInfo.StatusSeverityDescription = successStatus[0].StatusSeverityDescription;
+                    }
+                }
+                else
+                {
+                    responseString = response.Content.ReadAsStringAsync().Result;
+                    var failureStatus = JsonConvert.DeserializeObject<FailureStatus>(responseString);
+
+                    if (failureStatus != null)
+                    {
+                        roadInfo.Valid = false;
+                        roadInfo.FailureStatusCode = failureStatus.HttpStatusCode;
+                        roadInfo.FailureMessage = failureStatus.Message;
+                    }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                string responseString = response.Content.ReadAsStringAsync().Result;
-                var failureStatus = JsonConvert.DeserializeObject<FailureStatus>(responseString);
+                roadInfo.Valid = false;
+                roadInfo.FailureStatusCode = "System Error";
 
-                if (failureStatus != null)
-                {
-                    roadInfo.Valid = false;
-                    roadInfo.FailureStatusCode = failureStatus.HttpStatusCode;
-                    roadInfo.FailureMessage = failureStatus.Message;
-                }
+                //value in 'responseString' will be available when there is deserializatoin error due to unexpected response from server 
+                //eg: for invalid authentication keys
+                if (!string.IsNullOrEmpty(responseString))
+                    roadInfo.FailureMessage = responseString;
+                else
+                    roadInfo.FailureMessage = ex.Message + '\n' + ex.StackTrace;
             }
 
             return roadInfo;
