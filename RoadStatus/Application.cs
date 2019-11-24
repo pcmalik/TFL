@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RoadStatus.Tracker;
+using System;
 
 namespace RoadStatus
 {

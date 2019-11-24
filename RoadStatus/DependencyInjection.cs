@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using RoadStatus.Models;
 using RoadStatus.Repositories;
 using RoadStatus.Repositories.Interfaces;
+using RoadStatus.Tracker;
 using System;
 using System.IO;
 

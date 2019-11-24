@@ -1,6 +1,6 @@
 ﻿using RoadStatus.Models;
 
-namespace RoadStatus
+namespace RoadStatus.Tracker
 {
     public interface IStatusTracker
     {

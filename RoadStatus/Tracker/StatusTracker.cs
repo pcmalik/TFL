@@ -2,7 +2,7 @@
 using RoadStatus.Repositories.Interfaces;
 using System;
 
-namespace RoadStatus
+namespace RoadStatus.Tracker
 {
     public class StatusTracker : IStatusTracker
     {
