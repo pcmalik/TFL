@@ -39,12 +39,12 @@ Road API Client application is built in Windows platform using below mentioned p
 
        Immediately after getting output for valid road name, you can enter **echo $LastExitCode** to see the value of last exit code as shown below:
 
-       ![Valid Road Name Output](Snapshots/ValidRoadNameOutputLastExitCode.PNG)
+       ![Valid Road Name Output Last Exit Code](Snapshots/ValidRoadNameOutputLastExitCode.png)
 
       **Scenario 2: Invalid road name is passed as parameter**:
        Type the command shown in below screenshot in powershell window:
 
-       ![Dotnet Run Command](Snapshots/dotnetRunCommandInvalidRoadName.PNG)
+       ![Dotnet Run Command In Valid Road Name](Snapshots/dotnetRunCommandInValidRoadName.PNG)
 
        Here A233 is the parameter for invalid road name.
     
