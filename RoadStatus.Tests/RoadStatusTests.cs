@@ -14,13 +14,13 @@ namespace RoadStatus.Tests
         {
             //Arrange
             base.SetupForValidRoad();
-            var statusTracker = new StatusTracker(_tflRepository.Object, _config.Object);
+            var statusTracker = new StatusTracker(_tflRepository.Object);
 
             //Act
-            var road = statusTracker.GetRoadStatus(It.IsAny<string>());
+            var roadInfo = statusTracker.GetRoadStatus(It.IsAny<string>());
 
             //Assert
-             Assert.AreEqual(expectedDisplayName, road?.SuccessStatus.DisplayName);
+             Assert.AreEqual(expectedDisplayName, roadInfo?.DisplayName);
         }
 
         [TestMethod]
@@ -29,13 +29,13 @@ namespace RoadStatus.Tests
         {
             //Arrange
             base.SetupForValidRoad();
-            var statusTracker = new StatusTracker(_tflRepository.Object, _config.Object);
+            var statusTracker = new StatusTracker(_tflRepository.Object);
 
             //Act
-            var road = statusTracker.GetRoadStatus(It.IsAny<string>());
+            var roadInfo = statusTracker.GetRoadStatus(It.IsAny<string>());
 
             //Assert
-            Assert.AreEqual(expectedRoadStatus, road?.SuccessStatus.StatusSeverity);
+            Assert.AreEqual(expectedRoadStatus, roadInfo?.StatusSeverity);
         }
 
         [TestMethod]
@@ -44,13 +44,13 @@ namespace RoadStatus.Tests
         {
             //Arrange
             base.SetupForValidRoad();
-            var statusTracker = new StatusTracker(_tflRepository.Object, _config.Object);
+            var statusTracker = new StatusTracker(_tflRepository.Object);
 
             //Act
-            var road = statusTracker.GetRoadStatus(It.IsAny<string>());
+            var roadInfo = statusTracker.GetRoadStatus(It.IsAny<string>());
 
             //Assert
-            Assert.AreEqual(expectedRoadStatusDescription, road?.SuccessStatus.StatusSeverityDescription);
+            Assert.AreEqual(expectedRoadStatusDescription, roadInfo?.StatusSeverityDescription);
         }
         #endregion
 
@@ -60,13 +60,13 @@ namespace RoadStatus.Tests
         public void TestGetRoadStatus_When_InValidRoadId_Then_Return_InformativeError(string expectedFailureMessage)
         {
             base.SetupForInvalidRoad();
-            var statusTracker = new StatusTracker(_tflRepository.Object, _config.Object);
+            var statusTracker = new StatusTracker(_tflRepository.Object);
 
             //Act
-            var road = statusTracker.GetRoadStatus(It.IsAny<string>());
+            var roadInfo = statusTracker.GetRoadStatus(It.IsAny<string>());
 
             //Assert
-            Assert.AreEqual(expectedFailureMessage, road?.FailureStatus.Message);
+            Assert.AreEqual(expectedFailureMessage, roadInfo?.FailureMessage);
         }
 
         #endregion

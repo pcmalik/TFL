@@ -11,16 +11,37 @@ namespace RoadStatus
     {
         private readonly IOptions<AppSettings> _config;
         private readonly IRoadStatusRepository _roadStatusRepository;
+        private readonly IStatusTracker _statusTracker;
 
-        public TFLApplication(IRoadStatusRepository roadStatusRepository, IOptions<AppSettings> config)
+        public TFLApplication(IStatusTracker statusTracker)
         {
-            _roadStatusRepository = roadStatusRepository ?? throw new ArgumentNullException("roadStatusRepository");
-            _config = config ?? throw new ArgumentNullException("config");
+            _statusTracker = statusTracker;
         }
         
         internal void Run()
         {
-            IStatusTracker statusTracker = new StatusTracker(_roadStatusRepository, _config);
+            bool continueRunning = true;
+
+            while (continueRunning)
+            {
+                Console.Write("Input road name and then press 'Enter' key:");
+                var roadName = Console.ReadLine();
+
+                var roadStatus = _statusTracker.GetRoadStatus(roadName);
+
+                if (roadStatus.Valid)
+                {
+                    Console.WriteLine("Road name is: " + roadStatus.DisplayName);
+                    Console.WriteLine("Road severity status is: " + roadStatus.StatusSeverity);
+                    Console.WriteLine("Road severity status description is: " + roadStatus.StatusSeverityDescription);
+                }
+                else
+                    Console.WriteLine(roadStatus.FailureMessage);
+
+                Console.WriteLine();
+                Console.Write("Would you like to continue? entery Y/N:");
+                continueRunning = Console.ReadLine().ToUpper() == "Y";
+            }
         }
     }
 }

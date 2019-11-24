@@ -6,6 +6,6 @@ namespace RoadStatus
 {
     public interface IStatusTracker
     {
-        Road GetRoadStatus(string roadId);
+        RoadInfo GetRoadStatus(string roadId);
     }
 }

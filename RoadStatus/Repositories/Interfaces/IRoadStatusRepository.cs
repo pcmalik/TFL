@@ -1,9 +1,11 @@
-﻿using RoadStatus.Models;
+﻿using Microsoft.Extensions.Options;
+using RoadStatus.Models;
+using System.Threading.Tasks;
 
 namespace RoadStatus.Repositories.Interfaces
 {
     public interface IRoadStatusRepository
     {
-        Road GetRoadStatus(string roadId);
+        RoadInfo GetRoadStatus(string roadId);
     }
 }

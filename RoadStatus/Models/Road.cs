@@ -5,10 +5,15 @@ using System.Text;
 namespace RoadStatus.Models
 {
 
-    public class Road
+    public class RoadInfo
     {
-        public SuccessStatus SuccessStatus { get; set; }
-        public FailureStatus FailureStatus { get; set; }
+        public bool Valid { get; set; }
+
+        public string DisplayName { get; set; }
+        public string StatusSeverity { get; set; }
+        public string StatusSeverityDescription { get; set; }
+        public string FailureStatusCode { get; set; }
+        public string FailureMessage { get; set; }
     }
 
 }

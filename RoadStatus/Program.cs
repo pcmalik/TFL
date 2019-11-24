@@ -34,10 +34,12 @@ namespace RoadStatus
             serviceCollection.Configure<AppSettings>(configuration.GetSection("Configuration"));
 
             // add services
-            serviceCollection.AddTransient<IRoadStatusRepository, RoadStatusRepository>();
+            serviceCollection.AddScoped<IRoadStatusRepository, RoadStatusRepository>();
+            serviceCollection.AddScoped<IHttpServiceRepository, HttpServiceRepository>();
+            serviceCollection.AddScoped<IStatusTracker, StatusTracker>();
 
             // add application
-            serviceCollection.AddTransient<TFLApplication>();
+            serviceCollection.AddScoped<TFLApplication>();
         }
 
     }
