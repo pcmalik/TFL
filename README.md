@@ -1,10 +1,10 @@
 # TFL: Road API Client application:
 
-Road API Client application is built in Windows platform using below mentioned projects:
+Road API Client application is built using **RoadStatus** project as console client application and **RoadStatus.Tests** project to cover unit testing.
+It is built using C# .net core 2.0 using Visual Studio 2017 on Windows 10 platform.
 
-**RoadStatus** : is a Console client application built in C# .net core 2.0 using Visual Studio 2017.
-   This project has NuGet dependencies included for dependency injection, file configuration and newtonsoft for deserialization.
-   For complete list of dependencies and their versions, you can refer to RoadStatus.csproj file:
+**RoadStatus** : This project uses NuGet packages for dependency injection and file configuration from Microsoft .net core and deserialization from Newtonsoft.
+   For complete list of dependencies and their versions used in this project, you can refer to RoadStatus.csproj file:
 
 *	How to build the code
     1) Once the solution is cloned/downloaded from GitHub repository then it can be built using VS2017
