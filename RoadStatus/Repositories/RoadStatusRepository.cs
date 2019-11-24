@@ -16,6 +16,7 @@ namespace RoadStatus.Repositories
 
         public RoadStatusRepository(IHttpServiceRepository httpServiceRepository)
         {
+            httpServiceRepository = httpServiceRepository ?? throw new ArgumentNullException("httpServiceRepository");
             _httpServiceRepository = httpServiceRepository;
         }
 

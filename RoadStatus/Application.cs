@@ -26,6 +26,7 @@ namespace RoadStatus
             {
                 Console.Write("Input road name and then press 'Enter' key: ");
                 var roadName = Console.ReadLine();
+                Console.WriteLine();
 
                 var roadStatus = _statusTracker.GetRoadStatus(roadName);
 
