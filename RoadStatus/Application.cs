@@ -29,8 +29,7 @@ namespace RoadStatus
                 }
                 else
                 {
-                    Console.WriteLine($"\n{roadId} is not a valid road\n");
-
+                    Console.WriteLine($"\n"+roadStatus.FailureMessage +"\n");
                     status = 1;
                 }
             }

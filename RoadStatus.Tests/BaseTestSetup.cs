@@ -33,9 +33,8 @@ namespace RoadStatus.Tests
             _tflRepository.Setup(x => x.GetRoadStatus(It.IsAny<string>())).Returns(new RoadInfo
                         {
                             Valid = false,
-                            FailureStatusCode = "404",
-                            FailureMessage = "The following road id is not recognised: A233"
-                        });
+                            FailureMessage = "A233 is not a valid road"
+            });
 
             _config = new Mock<IOptions<AppSettings>>();
             _config.Setup(x => x.Value).Returns(new AppSettings { AppId = "MOCK_APP_ID", AppKey = "MOCK_APP_KEY" });

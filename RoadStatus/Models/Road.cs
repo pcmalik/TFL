@@ -12,7 +12,6 @@ namespace RoadStatus.Models
         public string DisplayName { get; set; }
         public string StatusSeverity { get; set; }
         public string StatusSeverityDescription { get; set; }
-        public string FailureStatusCode { get; set; }
         public string FailureMessage { get; set; }
     }
 

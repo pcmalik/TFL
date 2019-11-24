@@ -57,7 +57,7 @@ namespace RoadStatus.Tests
 
         #region Invalid Road Scenarios
         [TestMethod]
-        [DataRow("The following road id is not recognised: A233")]
+        [DataRow("A233 is not a valid road")]
         public void TestGetRoadStatus_When_InValidRoadId_Then_Return_InformativeError(string expectedFailureMessage)
         {
             base.SetupForInvalidRoad();

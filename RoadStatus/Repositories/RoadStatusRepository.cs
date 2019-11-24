@@ -12,8 +12,7 @@ namespace RoadStatus.Repositories
 
         public RoadStatusRepository(IHttpServiceRepository httpServiceRepository)
         {
-            httpServiceRepository = httpServiceRepository ?? throw new ArgumentNullException("httpServiceRepository");
-            _httpServiceRepository = httpServiceRepository;
+            _httpServiceRepository = httpServiceRepository ?? throw new ArgumentNullException("httpServiceRepository");
         }
 
         public RoadInfo GetRoadStatus(string roadId)
@@ -48,15 +47,13 @@ namespace RoadStatus.Repositories
                     if (failureStatus != null)
                     {
                         roadInfo.Valid = false;
-                        roadInfo.FailureStatusCode = failureStatus.HttpStatusCode;
-                        roadInfo.FailureMessage = failureStatus.Message;
+                        roadInfo.FailureMessage = $"{roadId} is not a valid road";
                     }
                 }
             }
             catch (Exception ex)
             {
                 roadInfo.Valid = false;
-                roadInfo.FailureStatusCode = "System Error";
 
                 //value in 'responseString' will be available when there is deserializatoin error due to unexpected response from server 
                 //eg: for invalid authentication keys
