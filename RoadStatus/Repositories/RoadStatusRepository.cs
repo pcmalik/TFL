@@ -33,22 +33,21 @@ namespace RoadStatus.Repositories
 
                     if (successStatus != null && successStatus.Length > 0)
                     {
-                        roadInfo.Valid = true;
                         roadInfo.DisplayName = successStatus[0].DisplayName;
                         roadInfo.StatusSeverity = successStatus[0].StatusSeverity;
                         roadInfo.StatusSeverityDescription = successStatus[0].StatusSeverityDescription;
                     }
+                    roadInfo.Valid = true;
                 }
                 else
                 {
+
                     responseString = response.Content.ReadAsStringAsync().Result;
                     var failureStatus = JsonConvert.DeserializeObject<FailureStatus>(responseString);
-
                     if (failureStatus != null)
-                    {
-                        roadInfo.Valid = false;
                         roadInfo.FailureMessage = $"{roadId} is not a valid road";
-                    }
+
+                    roadInfo.Valid = false;
                 }
             }
             catch (Exception ex)
