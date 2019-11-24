@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using RoadStatus.Models;
 using RoadStatus.Tracker;
 
 namespace RoadStatus.Tests
@@ -67,6 +68,22 @@ namespace RoadStatus.Tests
 
             //Assert
             Assert.AreEqual(expectedFailureMessage, roadInfo?.FailureMessage);
+        }
+
+        [TestMethod]
+        [DataRow(1)]
+        public void TestGetRoadStatus_When_InValidRoadId_Then_Return_LastExitCode(int expectedLastExitCode)
+        {
+            //Arrange
+            var statusTracker = new Mock<IStatusTracker>();
+            statusTracker.Setup(x => x.GetRoadStatus(It.IsAny<string>())).Returns(new RoadInfo{Valid = false});
+
+            var application = new TFLApplication(statusTracker.Object);
+            //Act
+            var result = application.Run(new string[] { "Invalid_Road"});
+
+            //Assert
+            Assert.AreEqual(expectedLastExitCode, result);
         }
 
         #endregion

@@ -4,13 +4,13 @@ namespace RoadStatus
 {
     partial class Program
     {
-        public static void Main(string[] args)
+        public static int Main(string[] args)
         {
             // Configure dependencies
             var serviceProvider = DependencyInjection.ConfigureServices();
 
             // run app
-            serviceProvider.GetService<TFLApplication>().Run();
+            return serviceProvider.GetService<TFLApplication>().Run(args);
         }
     }
 }

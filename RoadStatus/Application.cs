@@ -12,35 +12,34 @@ namespace RoadStatus
             _statusTracker = statusTracker;
         }
         
-        internal void Run()
+        public int Run(string[] args)
         {
-            bool continueRunning = true;
-
-            while (continueRunning)
+            int status = 0;
+            if (args != null && args.Length > 0)
             {
-                Console.Write("Input road name and then press 'Enter' key: ");
-                var roadName = Console.ReadLine();
-                Console.WriteLine();
+                string roadId = args[0];
 
-                var roadStatus = _statusTracker.GetRoadStatus(roadName);
+                var roadStatus = _statusTracker.GetRoadStatus(roadId);
 
                 if (roadStatus.Valid)
                 {
                     Console.WriteLine("Road name is: " + roadStatus.DisplayName);
                     Console.WriteLine("Road severity status is: " + roadStatus.StatusSeverity);
                     Console.WriteLine("Road severity status description is: " + roadStatus.StatusSeverityDescription + '\n');
-                    Console.WriteLine("LastExitCode is: " + 0 + '\n');
                 }
                 else
                 {
                     Console.WriteLine("Failure status code is: " + roadStatus.FailureStatusCode);
                     Console.WriteLine("Failure message is: " + roadStatus.FailureMessage + '\n');
-                    Console.WriteLine("LastExitCode is: " + 1 + '\n');
-                }
 
-                Console.Write("Input Y to continue or any other key to exit application: ");
-                continueRunning = Console.ReadLine().ToUpper() == "Y";
+                    status = 1;
+                }
             }
+
+            /*Unocomment below line if you need to see the output in console*/
+            //Console.ReadLine();
+
+            return status;
         }
     }
 }
