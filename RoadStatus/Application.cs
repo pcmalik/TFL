@@ -23,21 +23,17 @@ namespace RoadStatus
 
                 if (roadStatus.Valid)
                 {
-                    Console.WriteLine("Road name is: " + roadStatus.DisplayName);
-                    Console.WriteLine("Road severity status is: " + roadStatus.StatusSeverity);
-                    Console.WriteLine("Road severity status description is: " + roadStatus.StatusSeverityDescription + '\n');
+                    Console.WriteLine($"The status of the {roadId} is as follows\n");
+                    Console.WriteLine($"\t Road Status is {roadStatus.StatusSeverity} \n");
+                    Console.WriteLine($"\t Road Status Description is {roadStatus.StatusSeverityDescription} \n");
                 }
                 else
                 {
-                    Console.WriteLine("Failure status code is: " + roadStatus.FailureStatusCode);
-                    Console.WriteLine("Failure message is: " + roadStatus.FailureMessage + '\n');
+                    Console.WriteLine($"{roadId} is not a valid road\n");
 
                     status = 1;
                 }
             }
-
-            /*Unocomment below line if you need to see the output in console*/
-            //Console.ReadLine();
 
             return status;
         }
