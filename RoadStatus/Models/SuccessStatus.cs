@@ -1,10 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace RoadStatus.Models
+﻿namespace RoadStatus.Models
 {
     public class SuccessStatus
     {
-        [JsonProperty("$Type")]
         public string Type {get; set;}
         public string Id { get; set; }
         public string DisplayName { get; set; }
