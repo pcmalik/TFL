@@ -1,16 +1,9 @@
-﻿using Microsoft.Extensions.Options;
-using RoadStatus.Models;
-using RoadStatus.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
 namespace RoadStatus
 {
     public class TFLApplication
     {
-        private readonly IOptions<AppSettings> _config;
-        private readonly IRoadStatusRepository _roadStatusRepository;
         private readonly IStatusTracker _statusTracker;
 
         public TFLApplication(IStatusTracker statusTracker)

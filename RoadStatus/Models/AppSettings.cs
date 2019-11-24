@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RoadStatus.Models
+﻿namespace RoadStatus.Models
 {
     public class AppSettings
     {

@@ -1,11 +1,9 @@
 ﻿using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
 using RoadStatus.Models;
 using RoadStatus.Repositories.Interfaces;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Threading.Tasks;
 
 namespace RoadStatus.Repositories
 {
