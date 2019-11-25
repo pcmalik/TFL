@@ -1,7 +1,7 @@
 # TFL: Road API Client application:
 
 Road API Client application is built using **RoadStatus** project as console client application and **RoadStatus.Tests** project to cover unit testing.
-It is built using C# .net core 2.0 using Visual Studio 2017 on Windows 10 platform.
+Both these projects are under TFL.sln solution. C# .net core 2.0 with VS 2017 is used to build this solution on Windows 10 platform.
 
 **RoadStatus** : This project uses NuGet packages for dependency injection and file configuration from Microsoft .net core and deserialization from Newtonsoft.
    For complete list of dependencies and their versions used in this project, you can refer to RoadStatus.csproj file:
@@ -13,7 +13,7 @@ It is built using C# .net core 2.0 using Visual Studio 2017 on Windows 10 platfo
 *	How to run the output
     1) In order to use it you will need to register for a developer key here: https://api-portal.tfl.gov.uk/
     2) After registering, you will be provided with Application Id and Application Key
-    3) Go to appsettings.json file in the project folder in the location shown below:
+    3) Open TFL.sln solution in VS 2017 and then go to appsettings.json file in the RoadStatus project folder in the location shown below:
     
       ![Appsettings Location](Snapshots/appsettingsLocation.png)
 
@@ -68,8 +68,8 @@ It is built using C# .net core 2.0 using Visual Studio 2017 on Windows 10 platfo
 
 *	any assumptions that you’ve made
   1) As per instructions given in the requirement document, assumption is made that results from TFL Road api will be presented only in console application.
-  2) If there is a requirement to present the results from Tfl Road api not only in console application but also in other type of applications as well eg: ASP.Net/Angular then there is
-     further scope to seperate the logic from this project in a dll that could then be used in either console application or ASP.Net or Angular application etc.
+  2) If there is a requirement to present the results from Tfl Road api not only in console application but also in other type of applications as well eg: ASP.Net/WPF/Winform then there is
+     further scope to seperate the logic from this project in a dll that could then be used in either console application or ASP.Net/WPF/Winform etc.
   3) To adhere to the instructions in document, I have created unit test only for those scenarios mentioned in the requirement document otherwise there is further scope to add more unit tests
 
 *	anything else you think is relevant
