@@ -74,6 +74,8 @@ Both these projects are under TFL.sln solution. C# .net core 2.0 with VS 2017 is
   4) When invalid value for AppId/AppKey are used in appsettings.json then assumption is made that the response will be read from the server but such response will fail to serialize and this exception will be handled as generic exception and then presented in console of the application.
   5) When invalid value for BaseUrl is used in appsettings.json then assumption is made the exception thrown will be handled as generic exception which will then be presented in console of the application.
   6) There is scope to handle specific exception instead of handling the exceptions as generic exception but assumption is made that it is out of scope of the requirement
+  7) Assumption is made that only 1 road name will be passed as command line argument to the console application
+  8) Assumption is made that the response from road api service with success status array will have only 1 item in it
 
 *	anything else you think is relevant
   1) TDD approach is followed in this solution by creating unit tests with mock data then followed by implementation and refactoring.
