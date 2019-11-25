@@ -8,7 +8,6 @@ namespace RoadStatus.Tests
     public class BaseTestSetup
     {
         protected Mock<IRoadStatusRepository> _tflRepository;
-        protected Mock<IOptions<AppSettings>> _config;
 
         protected virtual void SetupForValidRoad()
         {
@@ -21,9 +20,6 @@ namespace RoadStatus.Tests
                             StatusSeverity = "Good",
                             StatusSeverityDescription = "No Exceptional Delays",
             });
-
-            _config = new Mock<IOptions<AppSettings>>();
-            _config.Setup(x => x.Value).Returns(new AppSettings { AppId = "MOCK_APP_ID", AppKey = "MOCK_APP_KEY" });
         }
 
         protected virtual void SetupForInvalidRoad()
@@ -35,9 +31,6 @@ namespace RoadStatus.Tests
                             Valid = false,
                             FailureMessage = "A233 is not a valid road"
             });
-
-            _config = new Mock<IOptions<AppSettings>>();
-            _config.Setup(x => x.Value).Returns(new AppSettings { AppId = "MOCK_APP_ID", AppKey = "MOCK_APP_KEY" });
         }
 
     }
